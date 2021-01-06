@@ -45,11 +45,11 @@ const continents = [
     },
     {
         "_id": 3,
-        "name": "Female Wears"
+        "name": "Female"
     },
     {
         "_id": 4,
-        "name": "Male Wears"
+        "name": "Male"
     },
     {
         "_id": 5,

@@ -9,8 +9,8 @@ const { TextArea } = Input;
 const Continents = [
     { key: 1, value: "Shoes" },
     { key: 2, value: "Bags" },
-    { key: 3, value: "Female wears" },
-    { key: 4, value: "Male Wears" },
+    { key: 3, value: "Female" },
+    { key: 4, value: "Male" },
     { key: 5, value: "Gadgets" },
     { key: 6, value: "Books" },
     { key: 7, value: "Edibles" }

@@ -1,18 +1,29 @@
 import React, { Component } from "react";
 import './style.css';
 import './bootstrap.css';
+import emailjs from 'emailjs-com';
 import payment from './aboutimage/payment.png';
-
-
-import './contact.json';
 import {Helmet} from "react-helmet";
 
-    const ContactPage = () => (
-      
-      <div>
+export default function ContactPage() {
+
+  function sendEmail(e) {
+    e.preventDefault();
+
+    emailjs.sendForm('email', 'template_34by3xc', e.target, 'user_l1gONf4IBdUxbzFRAQ3bx')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  }
+
+  return (
+    <div>
         <div id="contact">
           <div className="container">
-         
+
+            
           <Helmet>
           <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1" type="text/javascript" />
            </Helmet>
@@ -23,7 +34,10 @@ import {Helmet} from "react-helmet";
   agent-id="986185a4-61ad-4298-9cce-49e9bef887cc"
   language-code="en"
 ></df-messenger>
-            <div className="col-md-8">
+
+           
+
+<div className="col-md-8">
               <div className="row">
                 <div className="section-title">
                   <h2>Get In Touch</h2>
@@ -32,13 +46,13 @@ import {Helmet} from "react-helmet";
                     will get back to you as soon as possible.
                   </p>
                 </div>
-                <form name="sentMessage" id="contactForm" noValidate>
+                <form onSubmit = {sendEmail}>
                   <div className="row">
                     <div className="col-md-6">
-                      <div className="form-group">
+                      <div className="form-group mx-auto">
                         <input
                           type="text"
-                          id="name"
+                          name="name"
                           className="form-control"
                           placeholder="Name"
                           required="required"
@@ -47,10 +61,10 @@ import {Helmet} from "react-helmet";
                       </div>
                     </div>
                     <div className="col-md-6">
-                      <div className="form-group">
+                      <div className="form-group mx-auto">
                         <input
                           type="email"
-                          id="email"
+                          name="email"
                           className="form-control"
                           placeholder="Email"
                           required="required"
@@ -59,10 +73,9 @@ import {Helmet} from "react-helmet";
                       </div>
                     </div>
                   </div>
-                  <div className="form-group">
+                  <div className="form-group mx-auto">
                     <textarea
                       name="message"
-                      id="message"
                       className="form-control"
                       rows="4"
                       placeholder="Message"
@@ -71,12 +84,13 @@ import {Helmet} from "react-helmet";
                     <p className="help-block text-danger"></p>
                   </div>
                   <div id="success"></div>
-                  <button type="submit" className="btn btn-custom btn-lg">
-                    Send Message
-                  </button>
+                  <input type="submit" className = "btn btn-custom btn-lg" value = "send message"/>
+                  
+                  
                 </form>
               </div>
             </div>
+         
             <div className="col-md-3 col-md-offset-1 contact-info">
               <div className="contact-item">
                 <h3>Contact Info</h3>
@@ -155,8 +169,6 @@ import {Helmet} from "react-helmet";
 
             </div>
     </footer>
-       
-      </div>
-    );
-
-export default ContactPage;
+          </div>
+  );
+}

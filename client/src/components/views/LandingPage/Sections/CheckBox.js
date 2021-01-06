@@ -1,46 +1,33 @@
 import React, { useState } from 'react'
-import { Checkbox, Collapse } from 'antd';
+import { Radio , Collapse } from 'antd';
 
 const { Panel } = Collapse
 
 
 function CheckBox(props) {
 
-    const [Checked, setChecked] = useState([])
+    const [Value, setValue] = useState('0')
 
-    const handleToggle = (value) => {
+    const renderRadioBox = () => (
+        props.list &&  props.list.map((value) => (
+            <Radio key={value._id} value={`${value._id}`}>{value.name}</Radio>
+        ))
+    )
 
-        const currentIndex = Checked.indexOf(value);
-        const newChecked = [...Checked];
-
-        if (currentIndex === -1) {
-            newChecked.push(value)
-        } else {
-            newChecked.splice(currentIndex, 1)
-        }
-
-        setChecked(newChecked)
-        props.handleFilters(newChecked)
-        //update this checked information into Parent Component 
-
+    const handleChange = (event) => {
+        setValue(event.target.value)
+        props.handleFilters(event.target.value)
     }
-
-    const renderCheckboxLists = () => props.list && props.list.map((value, index) => (
-        <React.Fragment key={index}>
-            <Checkbox
-                onChange={() => handleToggle(value._id)}
-                type="checkbox"
-                checked={Checked.indexOf(value._id) === -1 ? false : true}
-            />&nbsp;&nbsp;
-            <span>{value.name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </React.Fragment>
-    ))
 
     return (
         <div>
-            <Collapse defaultActiveKey={['0']} >
-                <Panel header="Products" key="1">
-                    {renderCheckboxLists()}
+            <Collapse defaultActiveKey={['0']}>
+                <Panel header="price" key="1">
+                    <Radio.Group onChange={handleChange} value={Value}>
+
+                        {renderRadioBox()}
+
+                    </Radio.Group>
                 </Panel>
             </Collapse>
         </div>
