@@ -153,7 +153,7 @@ function LandingPage() {
             <df-messenger
   intent="WELCOME"
   chat-title="Swacky Assistant"
-  agent-id="986185a4-61ad-4298-9cce-49e9bef887cc"
+  agent-id="ce33f138-e06e-42ac-a981-2aeeafb8fd7f"
   language-code="en"
 ></df-messenger>
             <div style={{ textAlign: 'center' }}>
