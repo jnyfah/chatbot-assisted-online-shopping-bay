@@ -167,7 +167,7 @@ function LandingPage() {
                 <Col lg={12} xs={24} >
                     <CheckBox
                         list={continents}
-                        handleFilters={filters => handleFilters(filters, "continents")}
+                        handleFilters={filters => handleFilters(filters, "categories")}
                     />
                 </Col>
                 <Col lg={12} xs={24}>
